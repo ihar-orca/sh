@@ -462,12 +462,13 @@ func (cfg *Config) wordField(wps []syntax.WordPart, ql quoteLevel) ([]fieldPart,
 					if b == '\\' && i+1 < len(s) {
 						switch s[i+1] {
 						case '"', '\\', '$', '`': // special chars
-							continue
+							// in case of triple slash for (e)grep double slash should be provided
+							if !(i+2 < len(s) && s[i+2] == '\\') {
+								continue
+							}
 						}
 					}
-					if b == '\\' {
-						buf.WriteByte(b)
-					}
+
 					buf.WriteByte(b)
 				}
 				s = buf.String()
