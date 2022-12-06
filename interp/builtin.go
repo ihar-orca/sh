@@ -23,7 +23,7 @@ func isBuiltin(name string) bool {
 	switch name {
 	case "true", ":", "false", "exit", "set", "shift", "unset",
 		"echo", "printf", "break", "continue", "pwd", "cd",
-		"wait", "builtin", "trap", "type", "source", ".", "command",
+		"wait", "builtin", "trap", "type", "source", ".",
 		"dirs", "pushd", "popd", "umask", "alias", "unalias",
 		"fg", "bg", "getopts", "eval", "test", "[", "exec",
 		"return", "read", "mapfile", "readarray", "shopt":
