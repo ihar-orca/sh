@@ -108,6 +108,11 @@ func oneIf(b bool) int {
 // atoi is just a shorthand for strconv.Atoi that ignores the error,
 // just like shells do.
 func atoi(s string) int {
+	// standard sh behaviour is to consider values as hexadecimal in case of a leading `0`
+	if string(s[0]) == "0" && len(s) > 1 {
+		n, _ := strconv.ParseInt(s, 16, 0)
+		return int(n)
+	}
 	n, _ := strconv.Atoi(s)
 	return n
 }
